@@ -1,1 +1,1 @@
-# PyTorch-GANs
+# pytorch-GANs
