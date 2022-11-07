@@ -83,9 +83,11 @@ Literally nothing changed in the training loop of DCGAN compared to vanilla GAN:
         * Logging parameters and number of epochs (as we have bigger images)
 
 ### DCGAN implementation
+    
     Note1:
         Many implementations out there, including PyTorch's official, did certain deviations from the original arch,
         without clearly explaining why they did it. PyTorch for intance uses 512 channels initially instead of 1024.
+    
     Note2:
         Small modification I did compared to the original paper -- I used kernel size = 4 as I can't get 64x64
         output spatial dimension with 5 no matter the padding setting. I noticed others did the same thing.
