@@ -74,6 +74,25 @@ At a limit, the generator generates perfect replicas from the input domain every
 * GANs typically work with image data and use *Convolutional Neural Networks*, or CNNs, as the generator and discriminator models.
 Modeling image data means that the latent space, the input to the generator, provides a compressed representation of the set of images or photographs used to train the model. It also means that the generator generates new images or photographs, providing an output that can be easily viewed and assessed by developers or users of the model.
 
+### Deep Convolutional Generative Adversarial Network - **DCGAN**
+Literally nothing changed in the training loop of DCGAN compared to vanilla GAN:
+
+    Things that changed:
+        * Model architecture - using CNNs compared to fully connected networks
+        * We're now using CelebA dataset loaded via utils.get_celeba_data_loader (MNIST would work, it's just too easy)
+        * Logging parameters and number of epochs (as we have bigger images)
+
+### DCGAN implementation
+    Note1:
+        Many implementations out there, including PyTorch's official, did certain deviations from the original arch,
+        without clearly explaining why they did it. PyTorch for intance uses 512 channels initially instead of 1024.
+    Note2:
+        Small modification I did compared to the original paper -- I used kernel size = 4 as I can't get 64x64
+        output spatial dimension with 5 no matter the padding setting. I noticed others did the same thing.
+        Also I'm not doing 0-centered normal weight initialization -- it actually gives far worse results.
+        Batch normalization, in general, reduced the need for smart initialization but it obviously still matters.
+        
+        
 ### **Conditional GANs**
 An important extension to the GAN is in their use for conditionally generating an output.
 
